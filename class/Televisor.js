@@ -1,4 +1,6 @@
-class Televisor extends Electrodomestico{
+import {Electrodomestico} from "./Electrodomestico.js";
+
+export class Televisor extends Electrodomestico{
 
    constructor(procedencia, tipoConsumo, tamanio, tdt) {
       super(procedencia, tipoConsumo);

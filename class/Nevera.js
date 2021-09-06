@@ -1,3 +1,5 @@
+import {Electrodomestico} from "./Electrodomestico.js";
+
 export class Nevera extends Electrodomestico {
 
    constructor(procedencia,tipoConsumo,capacidad) {
@@ -27,7 +29,6 @@ export class Nevera extends Electrodomestico {
         }
     }
 
-    
     toString() {
         return "Nevera[" +
                 super.toString() + "\n" +

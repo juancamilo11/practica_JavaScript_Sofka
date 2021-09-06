@@ -1,4 +1,5 @@
-class Electrodomestico {
+
+export class Electrodomestico {
    
    constructor(procedencia,tipoConsumo){
       this.procedencia=procedencia;
