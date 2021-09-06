@@ -5,28 +5,30 @@ import {Televisor} from "../class/Televisor.js";
 import {Database} from "../database/datos-inventario.js";
 
 import {generarFactura} from "../services/generacion-factura.js";
-import {serviciosInventario} from "../services/servicios-inventario.js";
+import {ServiciosInventario} from "../services/servicios-inventario.js";
 
 import {ingresoInventario} from "../views/ingreso-inventario.js";
 import {menuDeOpciones} from "../views/menu-principal.js";
 
-//Variables globales
-let database = new Database();
+let serviciosInventario = new ServiciosInventario();
+
 
 (function funcionPrincipal() {
    let ejecutarAccion = async function(opcion) {
       switch (opcion) {
          case "1":
-            await ingresoInventario.ingresarElectrodomestico()
+            let cadenaElectrodomestico = await ingresoInventario.ingresarCadenaElectrodomesticos("INGRESO DE PRODUCTOS AL INVENTARIO");
+            serviciosInventario.agregarProductosAlInventario(cadenaElectrodomestico);
             break;
          case "2":
-            servicios
+            let cadenaDeCompra = await ingresoInventario.ingresarCadenaElectrodomesticos("COMPRA DE ELECTRODOMESTICOS");;
+            serviciosInventario.venderProductos(cadenaDeCompra);
             break;
          case "3":
-            
+            serviciosInventario.generarFacturaDePago();
             break;   
          default:
-
+            serviciosInventario.mostrarInventario();
             break;
       }
    }

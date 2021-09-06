@@ -1,27 +1,23 @@
-import{Electrodomestico} from "../class/Electrodomestico.js";
-import{Televisor} from "../class/Televisor.js";
-import{Nevera} from "../class/Nevera.js";
-
 export const ingresoInventario  = {
 
-    async ingresarElectrodomestico() {
+    async ingresarCadenaElectrodomesticos(titulo) {
     let cadenaCaracteristicas;
     do {
-        cadenaCaracteristicas = await window.prompt("Ingrese a continuación una cadena separada " +
+        cadenaCaracteristicas = await window.prompt(titulo + "\nIngrese a continuación una cadena separada " +
         "por comas(,) donde estén contenidos los siguientes caracteres: \n"+
-                "1. Para el ingreso de un televisor:\n" +
+                "1. Para un televisor:\n" +
                 "  Televisor,Cantidad(1-n),Tipo Consumo(A/B/C),Tamaño(1-n),TDT(Si/No),Procedencia(Nacional/Internacional)\n" +
                 "  Ejemplo: Televisor,30,A,55,Si,Nacional\n\n" +
 
-                "2. Para el ingreso de una nevera:\n" +
+                "2. Para una nevera:\n" +
                 "  Nevera,Cantidad(1-n),Tipo Consumo(A/B/C),Capacidad(1-n),Procedencia(Nacional/Internacional)\n" +
                 "  Ejemplo: Nevera,10,B,250,Internacional\n\n" +
 
-                "3. Para el ingreso de un Electrodomestico general:\n" +
+                "3. Para un Electrodomestico general:\n" +
                 "  Electrodomestico,Cantidad(1-n),Tipo Consumo(A/B/C),Procedencia(Nacional/Internacional)\n" +
                 "  Ejemplo: Electrodomestico,5,C,Nacional\n");
         
-    } while(!this.laCadenaEsValida(cadenaCaracteristicas));
+    } while(cadenaCaracteristicas == null || !this.laCadenaEsValida(cadenaCaracteristicas));
     return cadenaCaracteristicas;
     },
 
