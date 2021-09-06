@@ -29,4 +29,32 @@ export class Database {
    agregarElectrodomestico(electrodomestico) {
       this.vecElectrodomesticos.push(electrodomestico);
    }
+
+   venderTelevisor(tvComprar) {
+      let adquirido = false;
+      this.vecTelevisores.forEach((tv,index,vecTelevisores) => {
+         if (tv == tvComprar) {
+            vecTelevisores.splice(index,1);
+            adquirido = index;
+            break;
+         }
+      });
+
+      return(adquirido);
+   }
+
+   venderNevera(neveraComprar) {
+      let posicion = -1;
+      this.vecNeveras.forEach((nevera,index,vecTelevisores) => {
+         if (nevera == neveraComprar) {
+            posicion = index;
+            break;
+         }
+      });
+      return(posicion);
+   }
+
+   venderElectrodomestico(electrodomestico) {
+      this.vecElectrodomesticos.push(electrodomestico);
+   }
 }
