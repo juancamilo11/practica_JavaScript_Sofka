@@ -1,6 +1,4 @@
-
-
-class Nevera extends Electrodomestico {
+export class Nevera extends Electrodomestico {
 
    constructor(procedencia,tipoConsumo,capacidad) {
       super(procedencia, tipoConsumo);
