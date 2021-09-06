@@ -10,6 +10,7 @@ import {ServiciosInventario} from "../services/servicios-inventario.js";
 import {ingresoInventario} from "../views/ingreso-inventario.js";
 import {menuDeOpciones} from "../views/menu-principal.js";
 
+
 let serviciosInventario = new ServiciosInventario();
 
 
@@ -39,11 +40,9 @@ let serviciosInventario = new ServiciosInventario();
          do {
             opcElegida = await menuDeOpciones.mostrarMenuPrincipal();
             await ejecutarAccion(opcElegida);
-            
-            
          } while(opcElegida != 5)
       } catch(Exception) {
-         console.log("Errorrr" + Exception);
+         console.log("Error: " + Exception);
       }
    }
    menuOpciones();

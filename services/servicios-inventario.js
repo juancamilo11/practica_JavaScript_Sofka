@@ -9,6 +9,7 @@ export class ServiciosInventario {
    
    constructor() {
       this.database= new Database();
+      this.carritoCompra = new CarritoCompra();
    }
 
    agregarTelevisores(vecCaracteristicas){
@@ -49,25 +50,60 @@ export class ServiciosInventario {
       let vecCaracteristicas = cadenaIngreso.split();
       switch (vecCaracteristicas[0]) {
          case "Televisor":
-            agregarTelevisores(vecCaracteristicas);
+            this.agregarTelevisores(vecCaracteristicas);
             break;
          case "Nevera":
-            agregarNeveras(vecCaracteristicas);
+            this.agregarNeveras(vecCaracteristicas);
             break;
          case "Electrodomestico":
-            agregarElectrodomesticos(vecCaracteristicas);
+            this.agregarElectrodomesticos(vecCaracteristicas);
             break;
          default:
             break;
       }
    }
 
-   venderProductos(inventario) {
-
+   venderProductos(cadenaCompra) {
+      let vecCaracteristicas = cadenaCompra.split();
+      let i;
+      switch (vecCaracteristicas[0]) {
+         case "Televisor":
+            for(i=0 ; i<vecCaracteristicas[1] ; i++) {
+               let televisor = this.database.venderTelevisor(vecCaracteristicas);
+               if(televisor != null) {
+                  this.carritoCompra.agregarTelevisor(televisor);
+               } else {
+                  break;
+               }
+            }
+            break;
+         case "Nevera":
+            for(i=0 ; i<vecCaracteristicas[1] ; i++) {
+               let nevera = this.database.venderNevera(vecCaracteristicas);
+               if(nevera != null) {
+                  this.carritoCompra.agregarNevera(nevera);
+               } else {
+                  break;
+               }
+            }
+            break;
+         case "Electrodomestico":
+            for(i=0 ; i<vecCaracteristicas[1] ; i++) {
+               let electrodomestico = this.database.venderElectrodomestico(vecCaracteristicas);
+               if(electrodomestico != null) {
+                  this.carritoCompra.agregarElectrodomestico(electrodomestico);
+               } else {
+                  break;
+               }
+            }
+            break;
+         default:
+            break;
+      }
    }
 
    generarFacturaDePago() {
-
+      return this.carritoCompra.generarFactura();
    }
 
    mostrarInventario() {

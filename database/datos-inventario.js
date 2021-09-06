@@ -31,30 +31,42 @@ export class Database {
    }
 
    venderTelevisor(tvComprar) {
-      let adquirido = false;
+      let televisorComprado = null;
       this.vecTelevisores.forEach((tv,index,vecTelevisores) => {
          if (tv == tvComprar) {
+            televisorComprado = tv;
             vecTelevisores.splice(index,1);
-            adquirido = index;
             break;
          }
       });
-
-      return(adquirido);
+      return(televisorComprado);
    }
 
    venderNevera(neveraComprar) {
-      let posicion = -1;
-      this.vecNeveras.forEach((nevera,index,vecTelevisores) => {
+      let neveraComprada = null;
+      this.vecNeveras.forEach((nevera,index,vecNeveras) => {
          if (nevera == neveraComprar) {
-            posicion = index;
+            neveraComprada = nevera;
+            vecNeveras.splice(index,1);
             break;
          }
       });
-      return(posicion);
+      return(neveraComprada);
    }
 
-   venderElectrodomestico(electrodomestico) {
-      this.vecElectrodomesticos.push(electrodomestico);
+   venderElectrodomestico(electrodComprar) {
+      let electComprado = null;
+      this.vecNeveras.forEach((electrod,index,vecElectrodomesticos) => {
+         if (electrod == electrodComprar) {
+            electComprado = electrod;
+            vecElectrodomesticos.splice(index,1);
+            break;
+         }
+      });
+      return(electComprado);
+   }
+
+   get getInventario() {
+      return([...this.vecTelevisores, ...this.vecNeveras, ...this.vecElectrodomesticos]);
    }
 }
