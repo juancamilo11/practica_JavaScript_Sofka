@@ -29,22 +29,34 @@ export class CarritoCompra {
       this.vecElectrodomesticos.push(electrodomestico);
    }
 
-   calcularPrecioTotal() {
-      let precioTotal = this.vecTelevisores.reduce((acum,elem)=>{
-         return(elem.getPrecioFinal() + acum);
-      });
+   calcularPrecioFinal() {
+      let precioTotal = this.getCarritoDeCompra.reduce((acum,elem)=>{
+         return(elem.getPrecioFinal + acum);
+      },0);
+      return precioTotal;
+   }
+
+   llenarFactura(vecElectrod) {
+      let acum="\n";
+      for(let i=0 ; i<vecElectrod.length ; i++){
+         acum += vecElectrod[i].toString() + '\n';
+      }
+      return(acum);
    }
 
    generarFactura() {
+      console.log(this.vecTelevisores);
+      console.log(this.vecNeveras);
+      console.log(this.vecElectrodomesticos);
       let acumFactura = "FACTURA DE COMPRA\n";
-      acumFactura += "Televisores: " + this.vecTelevisores;
-      acumFactura += "Neveras: " + this.vecNeveras;
-      acumFactura += "Electrodomesticos generales: " + this.getVecElectrodomesticos;
-      acumFactura += "Precio Final: " + this.calcularPrecioFinal();
+      acumFactura += "\nTelevisores: " + this.llenarFactura(this.vecTelevisores);
+      acumFactura += "\nNeveras: " + this.llenarFactura(this.vecNeveras);
+      acumFactura += "\nElectrodomesticos generales: " + this.llenarFactura(this.getVecElectrodomesticos);
+      acumFactura += "\nPrecio Final: " + this.calcularPrecioFinal();
+      return acumFactura;
    }
 
    get getCarritoDeCompra() {
       return([...this.vecTelevisores, ...this.vecNeveras, ...this.vecElectrodomesticos]);
    }
-
 }

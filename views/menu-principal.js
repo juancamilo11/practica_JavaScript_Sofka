@@ -1,6 +1,4 @@
-
-export const menuDeOpciones = {
-   
+export const menuDeOpciones = {   
    mostrarMenuPrincipal() {
       let opcionElegida;
       do {
@@ -11,7 +9,6 @@ export const menuDeOpciones = {
                "4. Revisar el inventario.\n" +
                "5. Salir").charAt(0);
       } while(opcionElegida < '1' || opcionElegida > '5');
-      
       return opcionElegida;
    }
 }

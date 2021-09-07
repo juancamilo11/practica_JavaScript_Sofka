@@ -24,6 +24,7 @@ export const ingresoInventario  = {
     laCadenaEsValida(cadenaCaracteristicas) {
         let esValida = false;
         let vecCaracteristicas = cadenaCaracteristicas.split(",");
+        console.log("Imprimiendo la cadena de ingreso a inventario: " + vecCaracteristicas);
         if(vecCaracteristicas.length < 4 || vecCaracteristicas.length > 6){ 
             window.alert("La cadena ingresada para el ingreso de electrodomésticos tiene un formato inválido.");
             return false;

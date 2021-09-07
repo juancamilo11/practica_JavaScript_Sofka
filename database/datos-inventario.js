@@ -1,3 +1,5 @@
+import { Televisor } from "../class/Televisor.js";
+
 export class Database {
    
    constructor() {
@@ -30,25 +32,34 @@ export class Database {
       this.vecElectrodomesticos.push(electrodomestico);
    }
 
+   obtenerTelevisorParaVender(cadenaTV) {
+      let vecTV = String(cadenaTV).split(",");
+      let televisor = new Televisor(vecTV[5], vecTV[2], vecTV[3], vecTV[4]);
+      return televisor;
+   }
+
    venderTelevisor(tvComprar) {
-      let televisorComprado = null;
-      this.vecTelevisores.forEach((tv,index,vecTelevisores) => {
-         if (tv == tvComprar) {
-            televisorComprado = tv;
-            vecTelevisores.splice(index,1);
+      let televisorAComprar = this.obtenerTelevisorParaVender(tvComprar);
+      for(let i=0 ; i<this.vecTelevisores.length ; i++) {
+         // console.log("1" +this.vecTelevisores[i].toString());
+         // console.log("2" +televisorAComprar.toString());
+         if (this.vecTelevisores[i].toString() == televisorAComprar.toString()) {
+            televisorAComprar = this.vecTelevisores[i];
+            this.vecTelevisores.splice(i,1);
             break;
          }
-      });
-      return(televisorComprado);
+      }
+      return(televisorAComprar);
    }
 
    venderNevera(neveraComprar) {
       let neveraComprada = null;
+      let seleccionado = false;
       this.vecNeveras.forEach((nevera,index,vecNeveras) => {
-         if (nevera == neveraComprar) {
+         if (!seleccionado && nevera == neveraComprar) {
             neveraComprada = nevera;
             vecNeveras.splice(index,1);
-            break;
+            seleccionado = true;
          }
       });
       return(neveraComprada);
@@ -56,17 +67,23 @@ export class Database {
 
    venderElectrodomestico(electrodComprar) {
       let electComprado = null;
+      let seleccionado = false;
       this.vecNeveras.forEach((electrod,index,vecElectrodomesticos) => {
-         if (electrod == electrodComprar) {
+         if (!seleccionado && electrod == electrodComprar) {
             electComprado = electrod;
             vecElectrodomesticos.splice(index,1);
-            break;
+            seleccionado = true;
          }
       });
       return(electComprado);
    }
 
    get getInventario() {
-      return([...this.vecTelevisores, ...this.vecNeveras, ...this.vecElectrodomesticos]);
+      let vecInventario = [...this.vecTelevisores, ...this.vecNeveras, ...this.vecElectrodomesticos];
+      let acum="";
+      for (let i=0 ; i<vecInventario.length ; i++) {
+         acum += vecInventario[i].toString();
+      }
+      return(acum);
    }
 }

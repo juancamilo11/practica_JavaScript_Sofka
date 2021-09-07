@@ -31,7 +31,10 @@ export class Nevera extends Electrodomestico {
 
     toString() {
         return "Nevera[" +
-                super.toString() + "\n" +
+                "nombre='" + this.nombre +
+                ", precio=" + this.precioFinal +
+                ", procedencia='" + this.procedencia +
+                ", tipoConsumo=" + this.tipoConsumo +
                 "capacidad=" + this.capacidad +
                 ']';
     }

@@ -1,4 +1,3 @@
-
 export class Electrodomestico {
    
    constructor(procedencia,tipoConsumo){
@@ -40,7 +39,7 @@ export class Electrodomestico {
       this.tipoConsumo = tipoConsumo;
     }
 
-   getPrecioPorTipoConsumo() {
+   calcPrecioPorTipoConsumo() {
       let precioPorConsumo = 0;
       switch(this.tipoConsumo) {
          case 'A':
@@ -58,7 +57,7 @@ export class Electrodomestico {
       return precioPorConsumo;
     }
    
-   getPrecioPorProcedencia() {
+   calcPrecioPorProcedencia() {
       let precioPorProcedencia = 0;
       switch(this.procedencia) {
          case "Internacional":
@@ -74,15 +73,15 @@ export class Electrodomestico {
     }
 
    calcPrecioFinalElec(){
-      this.precioFinal += this.getPrecioPorTipoConsumo();
-      this.precioFinal += this.getPrecioPorProcedencia();
+      this.precioFinal += this.calcPrecioPorTipoConsumo();
+      this.precioFinal += this.calcPrecioPorProcedencia();
     }
 
    toString() {
       return "Electrodomestico[" +
-            "nombre='" + this.nombre + '\'' +
+            "nombre='" + this.nombre +
             ", precio=" + this.precioFinal +
-            ", procedencia='" + this.procedencia + '\'' +
+            ", procedencia='" + this.procedencia +
             ", tipoConsumo=" + this.tipoConsumo +
             ']';
     }

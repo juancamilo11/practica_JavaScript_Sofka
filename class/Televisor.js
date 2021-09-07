@@ -27,7 +27,7 @@ export class Televisor extends Electrodomestico{
    }
 
    calcularPrecioFinal() {
-      if(this.tamanio > 40) {
+      if(parseInt(this.tamanio) > 40) {
          this.precioFinal += this.precioFinal * 0.3;
       }
       if(this.tdt) {
@@ -37,13 +37,13 @@ export class Televisor extends Electrodomestico{
 
    toString() {
       return "Televisor[" +
-            "nombre='" + this.nombre + '\'' +
-            ", precioFinal=" + this.precioFinal +
-            ", procedencia='" + this.procedencia + '\'' +
+            "nombre='" + this.nombre +
+            ", precioFinal=" + this.precioFinal + 
+            ", procedencia='" + this.procedencia +
             ", tipoConsumo=" + this.tipoConsumo +
-            ", tamanio=" + this.tamanio +
+            ", tamanio=" + this.tamanio + 
             ", tdt=" + this.tdt +
-            ']';
+            ']\n';
    }
 }
 
