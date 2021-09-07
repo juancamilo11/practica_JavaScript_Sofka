@@ -70,7 +70,6 @@ export class ServiciosInventario {
    venderProductos(cadenaCompra) {
       let vecCaracteristicas = cadenaCompra.split(',');
       let i;
-      console.log("Vec Cadena de venta: " + vecCaracteristicas);
       switch (vecCaracteristicas[0]) {
          case "Televisor":
             for(i=0 ; i<vecCaracteristicas[1] ; i++) {
@@ -114,6 +113,10 @@ export class ServiciosInventario {
 
    mostrarInventario() {
       return this.database.getInventario;
+   }
+
+   finalizarCompra() {
+      this.carritoCompra = new CarritoCompra();
    }
 
 }

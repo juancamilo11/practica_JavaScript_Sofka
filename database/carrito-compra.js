@@ -45,9 +45,6 @@ export class CarritoCompra {
    }
 
    generarFactura() {
-      console.log(this.vecTelevisores);
-      console.log(this.vecNeveras);
-      console.log(this.vecElectrodomesticos);
       let acumFactura = "FACTURA DE COMPRA\n";
       acumFactura += "\nTelevisores: " + this.llenarFactura(this.vecTelevisores);
       acumFactura += "\nNeveras: " + this.llenarFactura(this.vecNeveras);

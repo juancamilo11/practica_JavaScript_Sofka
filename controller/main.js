@@ -19,15 +19,22 @@ let serviciosInventario = new ServiciosInventario();
             serviciosInventario.venderProductos(cadenaDeCompra);
             break;
          case '3':
-            window.alert(serviciosInventario.generarFacturaDePago());
+            console.log('\n****FACTURA DE PAGO**** \n' + serviciosInventario.generarFacturaDePago() + '\n************ \n');
             break;   
          case '4':
-            console.log(serviciosInventario.mostrarInventario());
+            console.log('\n****INVENTARIO**** \n' + serviciosInventario.mostrarInventario() + '\n************ \n');
             break;
          case '5':
+            if(window.confirm('Esta seguro que desea finalizar la compra?')){
+               console.log('\n****FACTURA DE PAGO**** \n' + serviciosInventario.generarFacturaDePago() + '\n************ \n');
+               serviciosInventario.finalizarCompra();
+            }
+            break;
+         case '6':
             window.alert('Ha decidido salir, hasta luego.');
             break;
          default:
+
             break;
       }
    }
@@ -38,7 +45,7 @@ let serviciosInventario = new ServiciosInventario();
          do {
             opcElegida = await menuDeOpciones.mostrarMenuPrincipal();
             await ejecutarAccion(opcElegida);
-         } while(opcElegida != '5');
+         } while(opcElegida != '6');
       } catch(Exception) {
          console.log("Error: " + Exception);
       }

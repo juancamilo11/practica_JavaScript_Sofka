@@ -53,7 +53,6 @@ export class Database {
 
    obtenerNeveraParaVender(cadenaNevera) {
       let vecNevera = String(cadenaNevera).split(",");
-      console.log(vecNevera);
       let nevera = new Nevera(vecNevera[4], vecNevera[2], vecNevera[3]);
       
       return nevera;

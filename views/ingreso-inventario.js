@@ -24,7 +24,6 @@ export const ingresoInventario  = {
     laCadenaEsValida(cadenaCaracteristicas) {
         let esValida = false;
         let vecCaracteristicas = cadenaCaracteristicas.split(",");
-        console.log("Imprimiendo la cadena de ingreso a inventario: " + vecCaracteristicas);
         if(vecCaracteristicas.length < 4 || vecCaracteristicas.length > 6){ 
             window.alert("La cadena ingresada para el ingreso de electrodomésticos tiene un formato inválido.");
             return false;
@@ -83,110 +82,4 @@ export const ingresoInventario  = {
         let esValida = this.validarCantConsumoProced(vecCaracteristicas[1],vecCaracteristicas[2],vecCaracteristicas[3]);
         return esValida;
     }
-
-
-
-
-
-    
-//     async elegirElectrodomestico() {
-//     let opcionElegida;
-//     do {
-//         opcionElegida = await window.prompt("Ingrese a continuación una opción: \n" +
-//             "1.Televisor.\n" +
-//             "2.Nevera.\n" +
-//             "3.Otro\n").charAt(0);
-//     } while(typeof(opcionElegida) != "number" || opcionElegida < '1' || opcionElegida > '3');
-//     return opcionElegida;
-//    },
-
-//     ingresoTelevisor() {
-//         let cantidad = obtenerCantidad();
-//         let consumo = obtenerConsumo();
-//         let procedencia = obtenerProcedencia();
-//         let tamanio = obtenerTamanio();
-//         let tieneTDT = consultarTDT();
-        
-//         televisor = new Televisor(procedencia, consumo, tamanio, tieneTDT);
-        
-//         return televisor;
-//     },
-
-//     ingresoNevera() {
-//         let cantidad = obtenerCantidad();
-//         let consumo = obtenerConsumo();
-//         let procedencia = obtenerProcedencia();
-//         let capacidad = obtenerCapacidad();
-//         nevera = new Nevera(procedencia, consumo, capacidad);
-//         return nevera;
-//     },
-
-//     ingresoElectrodomestico() {
-//         let cantidad = obtenerCantidad();
-//         let consumo = obtenerConsumo();
-//         let procedencia = obtenerProcedencia();
-//         electrodomestico = new Electrodomestico(procedencia, consumo);
-//         return electrodomestico;
-//     },
-
-//     obtenerCapacidad() {
-//         let capacidad = -1;
-//         do {
-//             capacidad = window.prompt("Ingrese la capacidad de la nevera en litros: ");
-//         } while(typeof(capacidad) != "number" || capacidad <= 0);
-//         return capacidad;
-//     },
-
-//     consultarTDT() {
-//         let opcionElegida;
-//         let tieneTDT = false;
-//         do {
-//             opcionElegida = window.prompt("1.Si.\n" +
-//                     "2.No.\n" );
-//         } while(opcionElegida != '1' || opcionElegida != '2');
-//         tieneTDT = (opcionElegida == '1')?true:false;
-//         return tieneTDT;
-//     },
-
-//     obtenerTamanio() {
-//         let tamanio = -1;
-//         do {
-//             tamanio = window.prompt("Ingrese el tamaño del televisor en pulgadas:");
-//         } while(typeof(tamanio) != "number" || tamanio <= 0);
-//         return tamanio;
-//     },
-
-//     obtenerProcedencia() {
-//         let opcionElegida;
-//         let procedencia;
-//         do {
-//             opcionElegida = window.prompt("Seleccione la precendecia: \n" +
-//                     "1. Nacional.\n" +
-//                     "2. Internacional.\n" );
-//         } while(opcionElegida != "1" || opcionElegida != "2");
-//         procedencia = (opcionElegida == '1')?"Nacional":"Internacional";
-//         return procedencia;
-//     },
-
-//     obtenerConsumo() {
-//         let tipoConsumo;
-//         do {
-//             tipoConsumo = window.prompt("A. tipo A --> 450.\n" +
-//                     "B. tipo B --> 350.\n" +
-//                     "C. tipo C --> 250.\n");
-//         } while(tipoConsumo != "A" || tipoConsumo != "B" || tipoConsumo != "C");
-//         return tipoConsumo;
-//     },
-
-//     obtenerCantidad() {
-//         let cantidad;
-//         do {
-//             cantidad = window.prompt("A. tipo A --> 450.\n" +
-//                     "B. tipo B --> 350.\n" +
-//                     "C. tipo C --> 250.\n");
-//         } while(cantidad != "A" || cantidad != "B" || cantidad != "C");
-//         return cantidad;
-//     }
 }
-
-

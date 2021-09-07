@@ -7,8 +7,9 @@ export const menuDeOpciones = {
                "2. Comprar un electrodoméstico.\n" +
                "3. Generar factura de pago.\n" +
                "4. Revisar el inventario.\n" +
-               "5. Salir").charAt(0);
-      } while(opcionElegida < '1' || opcionElegida > '5');
+               "5. Finalizar compra actual.\n" +
+               "6. Salir").charAt(0);
+      } while(opcionElegida < '1' || opcionElegida > '6');
       return opcionElegida;
    }
 }
