@@ -27,7 +27,7 @@ export class Televisor extends Electrodomestico{
    }
 
    calcularPrecioFinal() {
-      if(parseInt(this.tamanio) > 40) {
+      if(this.tamanio > 40) {
          this.precioFinal += this.precioFinal * 0.3;
       }
       if(this.tdt) {

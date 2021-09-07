@@ -15,7 +15,6 @@ export class ServiciosInventario {
    }
 
    agregarTelevisores(vecCaracteristicas){
-      console.log(this.database.getVecTelevisores.length);
       for(let i=0 ; i<vecCaracteristicas[1] ; i++) {
          let televisor = new Televisor(vecCaracteristicas[5],
                                        vecCaracteristicas[2],
@@ -25,7 +24,6 @@ export class ServiciosInventario {
          // Televisor,Cantidad(1-n),Tipo Consumo(A/B/C),Tamaño(1-n),TDT(Si/No),Procedencia(Nacional/Internacional)
          this.database.agregarTelevisor(televisor);
       }
-      console.log(this.database.getVecTelevisores.length);
    }
 
    agregarNeveras(vecCaracteristicas) {
@@ -37,7 +35,6 @@ export class ServiciosInventario {
          // Nevera,Cantidad(1-n),Tipo Consumo(A/B/C),Capacidad(1-n),Procedencia(Nacional/Internacional)\n" +
          this.database.agregarNevera(nevera);
       }
-      alert(this.database.getInventario);
    }
 
    agregarElectrodomesticos(vecCaracteristicas) {
@@ -48,12 +45,10 @@ export class ServiciosInventario {
          // Electrodomestico,Cantidad(1-n),Tipo Consumo(A/B/C),Procedencia(Nacional/Internacional)\n" +
          this.database.agregarElectrodomestico(electrodomestico);
       }
-      alert(this.database.getInventario);
    }
 
    agregarProductosAlInventario(cadenaIngreso){
       let vecCaracteristicas = cadenaIngreso.split(',');
-      console.log("Llega hasta aquí" + vecCaracteristicas[0]);
 
       switch (vecCaracteristicas[0]) {
          case "Televisor":

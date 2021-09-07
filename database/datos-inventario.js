@@ -1,3 +1,4 @@
+import { Nevera } from "../class/Nevera.js";
 import { Televisor } from "../class/Televisor.js";
 
 export class Database {
@@ -41,8 +42,6 @@ export class Database {
    venderTelevisor(tvComprar) {
       let televisorAComprar = this.obtenerTelevisorParaVender(tvComprar);
       for(let i=0 ; i<this.vecTelevisores.length ; i++) {
-         // console.log("1" +this.vecTelevisores[i].toString());
-         // console.log("2" +televisorAComprar.toString());
          if (this.vecTelevisores[i].toString() == televisorAComprar.toString()) {
             televisorAComprar = this.vecTelevisores[i];
             this.vecTelevisores.splice(i,1);
@@ -52,30 +51,42 @@ export class Database {
       return(televisorAComprar);
    }
 
+   obtenerNeveraParaVender(cadenaNevera) {
+      let vecNevera = String(cadenaNevera).split(",");
+      console.log(vecNevera);
+      let nevera = new Nevera(vecNevera[4], vecNevera[2], vecNevera[3]);
+      
+      return nevera;
+   }
+
    venderNevera(neveraComprar) {
-      let neveraComprada = null;
-      let seleccionado = false;
-      this.vecNeveras.forEach((nevera,index,vecNeveras) => {
-         if (!seleccionado && nevera == neveraComprar) {
-            neveraComprada = nevera;
-            vecNeveras.splice(index,1);
-            seleccionado = true;
+      let neveraAComprar = this.obtenerNeveraParaVender(neveraComprar);
+      for(let i=0 ; i<this.vecNeveras.length ; i++) {
+         if (this.vecNeveras[i].toString() == neveraAComprar.toString()) {
+            neveraAComprar = this.vecNeveras[i];
+            this.vecNeveras.splice(i,1);
+            break;
          }
-      });
-      return(neveraComprada);
+      }
+      return(neveraAComprar);
+   }
+
+   obtenerElectrodParaVender(cadenaElectrod) {
+      let vecElectrod = String(cadenaElectrod).split(",");
+      let electrod = new Nevera(vecElectrod[3], vecElectrod[2]);
+      return electrod;
    }
 
    venderElectrodomestico(electrodComprar) {
-      let electComprado = null;
-      let seleccionado = false;
-      this.vecNeveras.forEach((electrod,index,vecElectrodomesticos) => {
-         if (!seleccionado && electrod == electrodComprar) {
-            electComprado = electrod;
-            vecElectrodomesticos.splice(index,1);
-            seleccionado = true;
+      let electrodAComprar = this.obtenerElectrodParaVender(electrodComprar);
+      for(let i=0 ; i<this.vecElectrodomesticos.length ; i++) {
+         if (this.vecElectrodomesticos[i].toString() == electrodAComprar.toString()) {
+            electrodAComprar = this.vecElectrodomesticos[i];
+            this.vecElectrodomesticos.splice(i,1);
+            break;
          }
-      });
-      return(electComprado);
+      }
+      return(electrodAComprar);
    }
 
    get getInventario() {

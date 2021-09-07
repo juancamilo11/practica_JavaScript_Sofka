@@ -19,13 +19,13 @@ export class Nevera extends Electrodomestico {
 
     calcularPrecioFinal(){
         if(this.capacidad > 120) {
-            let resto = capacidad - 120;
+            let resto = this.capacidad - 120;
             resto /= 10;
             resto = Math.floor(resto);
 
-            precioFinal += resto * (0.05 * precioFinal);
+            this.precioFinal += resto * 0.05 * this.precioFinal;
 
-            this.precioFinal += (int) (this.precioFinal * 0.3);
+            this.precioFinal += this.precioFinal * 0.3;
         }
     }
 

@@ -3,6 +3,7 @@ export class Electrodomestico {
    constructor(procedencia,tipoConsumo){
       this.procedencia=procedencia;
       this.tipoConsumo=tipoConsumo;
+      this.precioFinal=0.0;
       this.calcPrecioFinalElec();
       this.nombre="Electrodoméstico Generico";
    }
